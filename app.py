@@ -19,7 +19,7 @@ DOWNLOAD_FOLDER = 'downloads'
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
 # FFmpeg path for Railway/Linux
-FFMPEG_DIR = '/usr/bin'  # Railway/Linux system ffmpeg location
+FFMPEG_DIR = '/usr/bin'  # Docker/Linux system ffmpeg location
 
 # Global dictionary to track tasks
 tasks = {}
@@ -74,7 +74,6 @@ def background_download(task_id, url, quality, output_template, ffmpeg_dir=FFMPE
         tasks[task_id]['error'] = str(e)
 
 # --- Routes --- #
-
 @app.route('/')
 def index():
     return render_template('index.html')
