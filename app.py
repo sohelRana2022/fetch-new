@@ -5,10 +5,14 @@ from flask import Flask, render_template, request, jsonify, send_file, after_thi
 from flask_cors import CORS
 import yt_dlp
 import requests
+from dotenv import load_dotenv
 
 # Initialize Flask with default folders (templates/ and static/)
 app = Flask(__name__)
 CORS(app)
+
+# Load environment variables
+load_dotenv()
 
 DOWNLOAD_FOLDER = 'downloads'
 if not os.path.exists(DOWNLOAD_FOLDER):
@@ -26,7 +30,7 @@ if os.path.exists(FFMPEG_DIR):
 tasks = {}
 
 # YouTube Data API Key
-YOUTUBE_API_KEY = "AIzaSyAfEcy0soRzzgThv216NnH6rMENH7_fAZY"
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
 def background_download(task_id, url, quality, output_template, ffmpeg_dir):
     try:

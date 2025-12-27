@@ -41,9 +41,9 @@
             <div class="offline-message hidden"><i class="fas fa-wifi"></i> No Internet Connection</div>
             <h2 class="home-heading">Start Downloading</h2>
             <div class="page-subtitle">Paste a link to start downloading</div>
-            <div class="input-group">
-                <input type="text" id="url-input" placeholder="Paste YouTube URL here...">
-                <button id="paste-btn"><i class="fas fa-paste"></i></button>
+            <div class="input-group" style="flex-wrap: nowrap;">
+                <input type="text" id="url-input" placeholder="Paste YouTube URL here..." style="min-width: 0;">
+                <button id="paste-btn" style="flex-shrink: 0;"><i class="fas fa-paste"></i></button>
             </div>
             <button id="fetch-btn" class="action-btn">Get Video Info</button>
 
@@ -77,9 +77,9 @@
                 <div class="category-pill">Music</div>
                 <div class="category-pill">Gaming</div>
             </div>
-            <div class="input-group">
-                <input type="text" id="search-input" placeholder="Search YouTube..." autocomplete="off">
-                <button id="search-btn"><i class="fas fa-search"></i></button>
+            <div class="input-group" style="flex-wrap: nowrap;">
+                <input type="text" id="search-input" placeholder="Search YouTube..." autocomplete="off" style="min-width: 0;">
+                <button id="search-btn" style="flex-shrink: 0;"><i class="fas fa-search"></i></button>
                 <div id="search-suggestions" class="suggestions-dropdown"></div>
             </div>
             <div id="search-results" class="results-grid"></div>
@@ -101,9 +101,9 @@
                 </div>
             </div>
 
-            <div class="input-group">
-                <input type="text" id="multi-url-input" placeholder="Paste video link here...">
-                <button id="multi-paste-btn"><i class="fas fa-paste"></i></button>
+            <div class="input-group" style="flex-wrap: nowrap;">
+                <input type="text" id="multi-url-input" placeholder="Paste video link here..." style="min-width: 0;">
+                <button id="multi-paste-btn" style="flex-shrink: 0;"><i class="fas fa-paste"></i></button>
             </div>
             <button id="multi-fetch-btn" class="action-btn">Get Video</button>
 

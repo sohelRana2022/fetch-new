@@ -74,8 +74,9 @@ body {
 .app-container {
     width: 100%;
     max-width: 480px;
-    padding: 24px;
-    padding-bottom: 100px;
+    padding: 20px;
+    padding-top: max(20px, env(safe-area-inset-top) + 10px);
+    padding-bottom: max(100px, env(safe-area-inset-bottom) + 20px);
 }
 
 /* Typography */
@@ -154,7 +155,7 @@ input {
     flex: 1; background: transparent; border: none;
     padding: 12px 20px;
     color: white;
-    font-size: 0.95rem;
+    font-size: 16px;
     outline: none;
     backdrop-filter: none;
 }
@@ -351,7 +352,7 @@ input:focus {
 /* Bottom Nav */
 .bottom-nav {
     position: fixed;
-    bottom: 30px; left: 50%; transform: translateX(-50%);
+    bottom: max(20px, env(safe-area-inset-bottom) + 10px); left: 50%; transform: translateX(-50%);
     width: 85%; max-width: 350px;
     background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(20px);
@@ -551,4 +552,22 @@ input:focus {
 
 .empty-state:not(:only-child) {
     display: none;
+}
+
+/* Responsive Adjustments for Small Screens */
+@media (max-width: 380px) {
+    .app-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .home-heading {
+        font-size: 1.5rem;
+    }
+    .result-item img {
+        width: 90px;
+        height: 50px;
+    }
+    .custom-select {
+        min-width: 100%;
+    }
 }
