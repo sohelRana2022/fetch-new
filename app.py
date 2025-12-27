@@ -18,8 +18,8 @@ load_dotenv()
 DOWNLOAD_FOLDER = 'downloads'
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
-# FFmpeg will be picked up from system PATH
-FFMPEG_DIR = None  # None for Railway, uses system ffmpeg
+# FFmpeg path for Railway/Linux
+FFMPEG_DIR = '/usr/bin'  # system ffmpeg location on Linux
 
 # Global dictionary to track tasks
 tasks = {}
@@ -27,7 +27,7 @@ tasks = {}
 # YouTube Data API Key
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-def background_download(task_id, url, quality, output_template, ffmpeg_dir=None):
+def background_download(task_id, url, quality, output_template, ffmpeg_dir=FFMPEG_DIR):
     try:
         def progress_hook(d):
             if d['status'] == 'downloading':
@@ -42,13 +42,11 @@ def background_download(task_id, url, quality, output_template, ffmpeg_dir=None)
             'outtmpl': output_template,
             'nocheckcertificate': True,
             'prefer_ffmpeg': True,
+            'ffmpeg_location': ffmpeg_dir,
             'merge_output_format': 'mp4',
             'progress_hooks': [progress_hook],
             'quiet': True
         }
-
-        if ffmpeg_dir:
-            ydl_opts['ffmpeg_location'] = ffmpeg_dir
 
         if quality == 'mp3':
             ydl_opts.update({
