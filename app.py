@@ -19,7 +19,8 @@ DOWNLOAD_FOLDER = 'downloads'
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
 # FFmpeg path for Railway/Linux
-FFMPEG_DIR = '/usr/bin'  # system ffmpeg location on Linux
+FFMPEG_DIR = '/usr/bin'  # Railway/Linux system ffmpeg location
+
 
 # Global dictionary to track tasks
 tasks = {}
@@ -38,15 +39,16 @@ def background_download(task_id, url, quality, output_template, ffmpeg_dir=FFMPE
             elif d['status'] == 'finished':
                 tasks[task_id].update({'status': 'processing','progress': '100'})
 
-        ydl_opts = {
-            'outtmpl': output_template,
-            'nocheckcertificate': True,
-            'prefer_ffmpeg': True,
-            'ffmpeg_location': ffmpeg_dir,
-            'merge_output_format': 'mp4',
-            'progress_hooks': [progress_hook],
-            'quiet': True
-        }
+  ydl_opts = {
+    'outtmpl': output_template,
+    'nocheckcertificate': True,
+    'prefer_ffmpeg': True,
+    'ffmpeg_location': FFMPEG_DIR,  # <- important
+    'merge_output_format': 'mp4',
+    'progress_hooks': [progress_hook],
+    'quiet': True
+}
+
 
         if quality == 'mp3':
             ydl_opts.update({
